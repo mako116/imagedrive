@@ -13,9 +13,13 @@ import RegisterPage from "./pages/Dashboard/Register";
 import DashboardRootLayout from "./pages/Dashboard/DashboardRoot";
 import DashboardHomePage from "./pages/Dashboard/DashboardHome";
 import DashboardPatientsPage from "./pages/Dashboard/DashboardPatients";
-
-// Fonts
+ // Fonts
 import "./fonts/Providence.ttf";
+import DashboardServicePage from "./pages/Dashboard/DashboardServices";
+import DashboardDoctor from "./pages/Dashboard/DashboardDoctor";
+import DashBoardPartner from "./pages/Dashboard/DahboardPartner";
+ import DashboardUpdate from "./pages/Dashboard/DashboardUpdate";
+import DashboardTestimoni from "./pages/Dashboard/DashboardTestimonias";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +69,29 @@ const router = createBrowserRouter([
         path: "patients",
         element: <DashboardPatientsPage />,
       },
+      {
+        path: "Services",
+        element: <DashboardServicePage />,
+      },
+      {
+        path: "Doctors",
+        element: <DashboardDoctor />,
+      },
+      {
+        path: "Partners",
+        element: <DashBoardPartner />,
+      },
+      {
+        path: "Testimonials",
+        element: <DashboardTestimoni />,
+      },
+      {
+        path: "Comments",
+        element: <DashboardUpdate />,
+    },
+      // {
+      //   path: "News & Updates",
+      // },
     ],
   },
 ]);

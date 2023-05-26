@@ -17,17 +17,19 @@
    ];
 
    return (
-     <div className="relative z-40">
+     <div className="relative">
        {whatsappData.map((data, index) => (
          <div className="whatsapp-widget" key={index}>
-           <WhatsAppWidget
+            <WhatsAppWidget
              CompanyIcon={CompanyIcon}
              phoneNumber={data.phoneNumber}
              companyName={data.companyName}
              message={data.message}
            />
-         </div>
+       
+          </div>
        ))}
+      
      </div>
    );
  };

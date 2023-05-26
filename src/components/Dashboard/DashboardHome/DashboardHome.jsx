@@ -35,7 +35,7 @@ const DashboardHome = () => {
           color="text-[#045544]"
         />
         <DashboardHomeBox
-          heading="News & Updates"
+          heading="News&Updates"
           total="0"
           borderColor="border-[#f97729]"
           color="text-[#f97729]"

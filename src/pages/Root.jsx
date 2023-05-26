@@ -3,7 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navigation from "../components/Home/Navigation/Navigation";
 import Footer from "../components/Home/Footer";
 import WhatsApp from "../components/WhatsApp/WhatsApp";
-
+  
 const RootLayout = () => {
   const location = useLocation();
 
@@ -22,7 +22,10 @@ const RootLayout = () => {
       {location.pathname === "/login" ||
       location.pathname === "/register" ? undefined : (
         <WhatsApp />
+       
       )}
+     
+ 
     </>
   );
 };
