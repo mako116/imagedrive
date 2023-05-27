@@ -20,7 +20,7 @@ import DashboardDoctor from "./pages/Dashboard/DashboardDoctor";
 import DashBoardPartner from "./pages/Dashboard/DahboardPartner";
  import DashboardUpdate from "./pages/Dashboard/DashboardUpdate";
 import DashboardTestimoni from "./pages/Dashboard/DashboardTestimonias";
-
+ 
 const router = createBrowserRouter([
   {
     path: "/",
@@ -88,10 +88,12 @@ const router = createBrowserRouter([
       {
         path: "Comments",
         element: <DashboardUpdate />,
-    },
-      // {
-      //   path: "News & Updates",
-      // },
+     },
+      {
+        path: "Appointments",
+        // element: <Dashbo />,
+     },
+      
     ],
   },
 ]);

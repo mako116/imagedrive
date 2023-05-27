@@ -6,7 +6,7 @@ const TodoItem = ({ todo, deleteTodo, editTodo }) => {
       <h5>{todo?.title}</h5>
       <div className="buttons">
         <i
-          className="bx bx-edit-alt hasEdit"
+          className="fa fa-trash"
           onClick={() => editTodo(todo)}
         ></i>
         <i
