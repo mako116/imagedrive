@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import DashboardButton, {
-} from "../DashboardButton";
+import DashboardButton, { DashboardDeleteButton, DashboardUpdateButton } from "../DashboardButton";
 import ServiceData from '../../../ServiceData/ServiceData';
 import DashboardOverlay from '../DashboardOverlay';
 import Dashboardservices2 from './Dashboardservices2';
-const Dashboardservices = () => {
+import { MdUpdate } from "react-icons/md";
+
+ const Dashboardservices = () => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalHandler = () => {
@@ -12,9 +13,8 @@ const Dashboardservices = () => {
   };
 
   return (
-    <div>
+    <>
     <section className="relative pt-7 px-3 sm:px-8">
-     
       <div className="bg-white shadow-md overflow-x-auto">
         <h4 className="w-100  py-2 text-white text-xl text-center bg-[#5396c2] rounded-t sm:w-full">
           Services
@@ -25,6 +25,10 @@ const Dashboardservices = () => {
               
               <h2>{data.Name}</h2>
               <p>{data.paragraph}</p>
+              <div className='flex justify-start gap-3'>
+               <DashboardUpdateButton/>
+                 <DashboardDeleteButton/>
+              </div>
                <DashboardButton
                text={data.button}
                 showModalHandler={showModalHandler}
@@ -42,7 +46,7 @@ const Dashboardservices = () => {
     </section>
 
     {showModal && <DashboardOverlay />}
-  </div>
+  </>
   )
 }
 

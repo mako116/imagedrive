@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { Form } from 'react-router-dom';
- 
-const DashboardBoardAppointment = () => {
+import { useState } from 'react'
+  
+const DashboardBoardAppointments = () => {
      const [dateType, setDateType] = useState(false);
 
  const handleClick =()=>{
@@ -10,9 +9,8 @@ const DashboardBoardAppointment = () => {
   return (
     <>
     <section>
-    
-            <div
-      className="w-full pt-10 pb-10 px-6 text-white bg-[#2f2f2f] rounded-none md:w-1/2 md:pt-6 md:rounded"
+      <div
+      className="w-full  pt-10 pb-10 px-6 text-white bg-[#2f2f2f] rounded-none  md:pt-6 md:rounded"
       id="book-appointment"
     >
       <div className="flex flex-col items-center mb-10">
@@ -22,7 +20,7 @@ const DashboardBoardAppointment = () => {
         <div className="w-10 h-[3px] bg-[#f97729]" />
       </div>
 
-      <Form>
+  
         <div className="flex flex-col space-y-5 mb-5 md:mb-4">
           <div className="flex flex-col space-y-5 md:flex-row md:space-x-4 md:space-y-0">
             <input
@@ -71,8 +69,7 @@ const DashboardBoardAppointment = () => {
             Send
           </button>
         </div>
-      </Form>
-    </div>
+     </div>
             
     </section>
  
@@ -80,4 +77,4 @@ const DashboardBoardAppointment = () => {
   )
 }
 
-export default DashboardBoardAppointment
+export default DashboardBoardAppointments

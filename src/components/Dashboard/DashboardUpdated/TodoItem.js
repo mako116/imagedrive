@@ -1,18 +1,20 @@
 import React from "react";
-
+import { AiFillDelete, AiFillEdit, IconName } from "react-icons/ai";
 const TodoItem = ({ todo, deleteTodo, editTodo }) => {
   return (
     <div className="todoitem">
       <h5>{todo?.title}</h5>
       <div className="buttons">
-        <i
-          className="fa fa-trash"
-          onClick={() => editTodo(todo)}
-        ></i>
-        <i
-          className="bx bx-trash hasDelete"
-          onClick={() => deleteTodo(todo)}
-        ></i>
+     
+        <AiFillEdit
+           onClick={() => editTodo(todo)}
+           cursor="pointer"
+        />
+        <AiFillDelete
+        cursor="pointer"
+           onClick={() => deleteTodo(todo)}
+        />
+        
       </div>
     </div>
   );

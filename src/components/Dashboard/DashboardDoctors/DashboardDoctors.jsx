@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import DashboardButton, {
-} from "../DashboardButton";
+import DashboardButton, { DashboardDeleteButton, DashboardEditButton, DashboardViewButton } from "../DashboardButton";
  
  import DashboardOverlay from '../DashboardOverlay';
 import DashboardDoctorssModal from './DashboardDoctorsModal';
@@ -26,7 +25,7 @@ import { DoctorsForum } from '../../../DoctorsLOcals/DoctorsProfile';
         </h4>
         <div className="py-2 text-white text-justify rounded-t sm:w-full ">
           {DoctorsForum.map((data, index)=>(
-            <div className="py-2 text-white   sm:w-full " key={index}>
+            <div className="py-2 text-white p-5  sm:w-full " key={index}>
                  <div className='w-[100%] flex justify-center'>
                  <img className=' px-3 w-[300px] mb-1 h-[300px] rounded-t' src={data.img} alt="" />
                  </div>
@@ -35,6 +34,13 @@ import { DoctorsForum } from '../../../DoctorsLOcals/DoctorsProfile';
                  <p className='font-meduim px-3'><span className='lg:text-xl'> About:</span> {data.highlight}</p>
                  <div className='px-3'> <span className='lg:text-xl'>Schedule:</span>{data.Time}</div>
                </span>
+               <div className='flex justify-center gap-4 p-5'>
+                <DashboardEditButton/>
+                <DashboardViewButton 
+                  text="View more"
+                />
+                <DashboardDeleteButton/>
+               </div>
               </div>
           ))}
         </div>

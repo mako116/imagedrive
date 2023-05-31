@@ -120,8 +120,7 @@ import {Form, FormGroup} from "reactstrap"
               </div>
             </div>
             <div className="flex items-center justify-end space-x-2">
-              <DashboardGenerateButton onClick={()=> handleSubmit()} type='submit' text="Generate Pin" />
-              <DashboardRegisterButton onClick={()=> handleSubmit()} type='submit' text="Register" />
+               <DashboardRegisterButton onClick={()=> handleSubmit()} type='submit' text="Register" />
               <DashboardCloseButton
               
                 text="Close"

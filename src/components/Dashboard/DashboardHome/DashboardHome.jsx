@@ -35,7 +35,7 @@ const DashboardHome = () => {
           color="text-[#045544]"
         />
         <DashboardHomeBox
-          heading="News&Updates"
+          heading="NewsUpdates"
           total="0"
           borderColor="border-[#f97729]"
           color="text-[#f97729]"
@@ -46,18 +46,19 @@ const DashboardHome = () => {
           borderColor="border-[#f97729]"
           color="text-[#f97729]"
         />
+         <DashboardHomeBox
+          heading="Appointmentz"
+          total="0"
+          borderColor="border-[#f97729]"
+          color="text-[#f97729]"
+        />
         <DashboardHomeBox
           heading="Track Records"
           total="0"
           borderColor="border-[#045544]"
           color="text-[#045544]"
         />
-        <DashboardHomeBox
-          heading="Appointments"
-          total="0"
-          borderColor="border-[#f97729]"
-          color="text-[#f97729]"
-        />
+       
       </div>
     </section>
   );

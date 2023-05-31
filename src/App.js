@@ -20,7 +20,10 @@ import DashboardDoctor from "./pages/Dashboard/DashboardDoctor";
 import DashBoardPartner from "./pages/Dashboard/DahboardPartner";
  import DashboardUpdate from "./pages/Dashboard/DashboardUpdate";
 import DashboardTestimoni from "./pages/Dashboard/DashboardTestimonias";
- 
+import DashboardBoardAppointments from "./components/Dashboard/DashboardBookAppointment/DashboardAppointment";
+import DashboardNews from "./pages/Dashboard/DashboardNews";
+import DashboardUsers from "./pages/Dashboard/DashboardUsers";
+  
 const router = createBrowserRouter([
   {
     path: "/",
@@ -90,10 +93,17 @@ const router = createBrowserRouter([
         element: <DashboardUpdate />,
      },
       {
-        path: "Appointments",
-        // element: <Dashbo />,
-     },
-      
+        path: "book-appointment",
+        element: <DashboardBoardAppointments />,
+     },  
+      {
+        path: "news-update",
+        element:<DashboardNews/>
+     },  
+      {
+        path: "users",
+        element:<DashboardUsers/>
+     },  
     ],
   },
 ]);

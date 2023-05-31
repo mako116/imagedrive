@@ -1,6 +1,5 @@
 import {
-  DashboardGenerateButton,
-  DashboardRegisterButton,
+   DashboardRegisterButton,
   DashboardCloseButton,
 } from "../DashboardButton";
 
@@ -74,99 +73,16 @@ const DashboardPatientsModal = ({ showModalHandler }) => {
                 />
               </div>
             </div>
-
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="age">Age</label>
-              <input
-                id="age"
-                type="number"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="occularHistory">Occular History</label>
-              <input
-                id="occularHistory"
-                type="text"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="autoRef">Auto Ref</label>
-              <input
-                id="autoRef"
-                type="text"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="subRef">Sub Ref</label>
-              <input
-                id="subRef"
-                type="text"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="prescription">Prescription</label>
-              <textarea
-                id="prescription"
-                type="text"
-                className="py-1 px-2 h-24 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="pd">PD</label>
-              <input
-                id="pd"
-                type="text"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="drugs">Drugs</label>
-              <textarea
-                id="drugs"
-                type="text"
-                className="py-1 px-2 h-24 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="visualAcuity">Visual Acuity</label>
-              <input
-                id="visualAcuity"
-                type="text"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="fundoscopy">Fundoscopy</label>
-              <input
-                id="fundoscopy"
-                type="text"
-                className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-            <div className="flex flex-col space-y-1">
-              <label htmlFor="remark">Remark</label>
-              <textarea
-                id="remark"
-                type="text"
-                className="py-1 px-2 h-36 border border-gray-400 outline-[#f97729] rounded"
-              />
-            </div>
-          </div>
-
           <div className="flex items-center justify-end space-x-2">
-            <DashboardGenerateButton text="Generate Pin" />
-            <DashboardRegisterButton text="Register" />
+             <DashboardRegisterButton text="Register" />
             <DashboardCloseButton
               text="Close"
               showModalHandler={showModalHandler}
             />
           </div>
+          </div>
         </form>
-      </div>
+        </div>
     </>
   );
 };

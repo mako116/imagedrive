@@ -1,7 +1,11 @@
- import {
+ import DashboardUpdate from "../../../pages/Dashboard/DashboardUpdate";
+import {
   DashboardGenerateButton,
   DashboardRegisterButton,
   DashboardCloseButton,
+  DashboardAddButton,
+  DashboardUpdateButton,
+  DashboardDeleteButton,
 } from "../DashboardButton";
 
 const Dashboardservices2 = ({showModalHandler}) => {
@@ -75,9 +79,10 @@ const Dashboardservices2 = ({showModalHandler}) => {
           </div>
 
           <div className="flex items-center justify-end space-x-2">
-            <DashboardGenerateButton text="Generate Pin" />
-            <DashboardRegisterButton text="Register" />
-            <DashboardCloseButton
+          <DashboardAddButton 
+            text="Add"
+          />             
+              <DashboardCloseButton
               text="Close"
               showModalHandler={showModalHandler}
             />

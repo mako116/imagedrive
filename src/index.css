@@ -86,18 +86,39 @@ body {
 }
 
 .wrapper.darkMode .form {
-  background: #222;
+  background:d #222;
 }
 
 .form input {
-  width: 90%;
+  width: 100%;
   border: none;
   padding: 10px 12px;
   border-radius: 0px;
   transition: all 300ms ease-in-out;
   font-size: 16px;
 }
-
+.formgroup input {
+  width: 100%;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 0px;
+  transition: all 300ms ease-in-out;
+  font-size: 16px;
+  outline: none;
+}
+button{
+  border-radius: 5px;
+}
+.form__group{
+  padding:0;
+  width: 100%;
+}
+.form__group textarea{
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+}
 .wrapper.darkMode .form input {
   background: #222;
   color: #fff;
@@ -117,13 +138,13 @@ body {
 .form button {
   border: none;
   padding: 12px 22px;
-  background: purple;
+  background: #f97729;
   color: #fff;
   border-radius: 10px;
   cursor: pointer;
 }
 
-.todolist {
+.todolist { 
   width: 100%;
   margin: 40px auto;
 }
@@ -177,7 +198,16 @@ body {
 .todoitem div i.hasDelete {
   background: #fbcebe;
 }
-
+.round{
+  padding: 5px;
+  background-color: #d7d7d7;
+  border-radius: 20px;
+}
+.shape{
+  width: 60px;
+  border-radius: 20px;
+  background-color: #d7d7d7;
+}
 error {
   font-size: 10px;
   color: #ff6774;
