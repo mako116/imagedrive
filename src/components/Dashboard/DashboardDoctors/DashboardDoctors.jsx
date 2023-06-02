@@ -19,28 +19,28 @@ import { DoctorsForum } from '../../../DoctorsLOcals/DoctorsProfile';
        text="Assign Doctors"
        showModalHandler={showModalHandler}
        />
-        <div className="w-[100%] h-[100%] bg-white shadow-md overflow-x-auto">
+        <div className="bg-white shadow-md overflow-x-auto">
         <h4 className=" py-2 text-white text-xl text-center bg-[#87a5b9] rounded-t sm:w-full">
         DOCTORS REGISTER
         </h4>
-        <div className="py-2 text-white text-justify rounded-t sm:w-full ">
+        <div className="py-2 text-white rounded-t  sm:w-full ">
           {DoctorsForum.map((data, index)=>(
-            <div className="py-2 text-white p-5  sm:w-full " key={index}>
-                 <div className='w-[100%] flex justify-center'>
-                 <img className=' px-3 w-[300px] mb-1 h-[300px] rounded-t' src={data.img} alt="" />
+            <div className="py-2 text-white p-2 flex justify-between sm:w-full " key={index}>
+                 <div className='flex justify-center'>
+                 <img className='w-screen' id='responsive' src={data.img} alt="" />
                  </div>
-              <span className='h-[100%] p-6 text-center text-black pt-1'>
-                 <h2 className='w-[100%] p-3 bg-[#d38e0d] text-white text-lg lg:text-xl'>Name: {data.Name}</h2>
-                 <p className='font-meduim px-3'><span className='lg:text-xl'> About:</span> {data.highlight}</p>
-                 <div className='px-3'> <span className='lg:text-xl'>Schedule:</span>{data.Time}</div>
-               </span>
-               <div className='flex justify-center gap-4 p-5'>
+              <span className='w-screen h-[100%] border p-2 text-left leading-7 text-black'>
+                 <h2 className='p-3 bg-[#d38e0d] text-white '>Name: {data.Name}</h2>
+                 <p className=''><span className=''> About:</span> {data.highlight}</p>
+                  <span className=''>Schedule: {data.Time}</span>
+                <div className='flex justify-center gap-4 p-5'>
                 <DashboardEditButton/>
                 <DashboardViewButton 
                   text="View more"
                 />
-                <DashboardDeleteButton/>
+                <DashboardDeleteButton/> 
                </div>
+               </span>
               </div>
           ))}
         </div>

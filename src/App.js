@@ -13,8 +13,6 @@ import RegisterPage from "./pages/Dashboard/Register";
 import DashboardRootLayout from "./pages/Dashboard/DashboardRoot";
 import DashboardHomePage from "./pages/Dashboard/DashboardHome";
 import DashboardPatientsPage from "./pages/Dashboard/DashboardPatients";
- // Fonts
-import "./fonts/Providence.ttf";
 import DashboardServicePage from "./pages/Dashboard/DashboardServices";
 import DashboardDoctor from "./pages/Dashboard/DashboardDoctor";
 import DashBoardPartner from "./pages/Dashboard/DahboardPartner";
@@ -23,7 +21,10 @@ import DashboardTestimoni from "./pages/Dashboard/DashboardTestimonias";
 import DashboardBoardAppointments from "./components/Dashboard/DashboardBookAppointment/DashboardAppointment";
 import DashboardNews from "./pages/Dashboard/DashboardNews";
 import DashboardUsers from "./pages/Dashboard/DashboardUsers";
-  
+ 
+ // Fonts
+import "./fonts/Providence.ttf";
+ 
 const router = createBrowserRouter([
   {
     path: "/",

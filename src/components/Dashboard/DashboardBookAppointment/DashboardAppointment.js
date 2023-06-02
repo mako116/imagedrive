@@ -1,78 +1,107 @@
-import { useState } from 'react'
+ import { Link } from 'react-router-dom';
+ import DashboardButton, { DashboardDeleteButton, DashboardEditButton } from '../DashboardButton';
+import { useState } from 'react';
+ import DashboardOverlay from '../DashboardOverlay';
+import DashboardAppointmentsModal from './DashboardAppointments2';
   
 const DashboardBoardAppointments = () => {
-     const [dateType, setDateType] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
- const handleClick =()=>{
-
- }
+  const showModalHandler = () => {
+    setShowModal((prevVal) => !prevVal);
+  };
   return (
     <>
-    <section>
-      <div
-      className="w-full  pt-10 pb-10 px-6 text-white bg-[#2f2f2f] rounded-none  md:pt-6 md:rounded"
-      id="book-appointment"
-    >
-      <div className="flex flex-col items-center mb-10">
-        <h2 className="mb-3 text-center text-3xl font-bold uppercase md:text-4xl">
-          Book Appointment
-        </h2>
-        <div className="w-10 h-[3px] bg-[#f97729]" />
-      </div>
-
-  
-        <div className="flex flex-col space-y-5 mb-5 md:mb-4">
-          <div className="flex flex-col space-y-5 md:flex-row md:space-x-4 md:space-y-0">
-            <input
-              className="p-2 w-full text-white bg-transparent border outline-none text-sm rounded placeholder-white"
-              type="text"
-              placeholder="Your Name *"
-              required
-            />
-            <input
-              className="p-2 w-full text-white bg-transparent border outline-none text-sm rounded placeholder-white"
-              type="text"
-              placeholder="Phone number *"
-              required
-            />
+    <section className='relative pt-5 px-3 sm:px-4'>  
+    <DashboardButton
+          showModalHandler={showModalHandler}
+          text="Add appointments"
+        />
+             <div className="w-full  pt-10 pb-10 text-gray rounded-none  md:pt-6 md:rounded"
+               id="book-appointment">
+                <div className="flex flex-col items-center mb-10">
+                  <h2 className="mb-3 text-center text-3xl font-bold uppercase md:text-4xl">
+                     Book Appointment
+                   </h2>
+                       <div className="w-10 h-[3px] bg-[#f97729]" />
+                      </div>
+                    </div>
+              <table className="w-screen text-center bg-white rounded sm:w-full">
+            <thead>
+              <tr className="text-lg border-b-2">
+                <th className="px-5 py-2 md:px-6 lg:px-4 xl:px-12">Name</th>
+                <th className="px-5 py-2 md:px-6 lg:px-4 xl:px-12">
+                  Phone No.
+                </th>
+                <th className="px-5 py-2 md:px-6 lg:px-4 xl:px-12">
+                 Email
+                </th>
+                <th className="px-2 py-2 md:px-6 lg:px-4 xl:px-12">
+                 Date & time
+                </th>
+                <th className="px-5 py-2 md:px-6 lg:px-4 xl:px-12">
+                 Branch
+                </th>
+                <th className="px-2 py-2 md:px-2 lg:px-2 xl:px-5">
+                  Any further Enquires
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="py-2 px-2">
+                <Link>Mfonobong Godwin Peter</Link>
+                 </td>
+                <td className="py-2 px-2">0812673811</td>
+                <td className="space-x-2 py-2">
+                 <Link>prosperjoy@gmail.com</Link>
+                </td>
+                <td className="py-4 px-4">
+                   <span>20/03/2023</span>
+                </td>
+                <td className="py-2 px-2">
+                  <Link>Port Harcourt</Link>
+                </td>
+                <td className="py-2 px-2 border">
+                <Link> Text:shouldnt be enlarged </Link>
+                </td>
+                <td className="flex justify-center space-x-2 py-2">
+                  <DashboardEditButton />
+                  <DashboardDeleteButton />
+                </td>
+              </tr>
+              <tr>
+                <td className="py-2 px-2">
+                <Link>Dr Ijeoma Nnabuife</Link>
+                 </td>
+                <td className="py-2 px-2">0812673811</td>
+                <td className="flex justify-center space-x-2 py-2">
+                <Link>prosperjoy@gmail.com</Link>
+                </td>
+                <td className="py-4 px-4">
+                <span>20/03/2023</span>
+                </td>
+                <td className="py-2 px-2">
+                  <Link>Uyo</Link>
+                </td>
+                <td className="py-3 px-3 border">
+                  <Link> Text:shouldnt be enlarged </Link>
+                </td>
+                <td className="flex justify-center space-x-2 px-2 py-2">
+                  <DashboardEditButton />
+                  <DashboardDeleteButton />
+                </td>
+              </tr>
+            </tbody>
+          </table>  
+          {showModal && (
+          <div className="absolute z-20 top-4 left-1/2 -translate-x-1/2 md:top-6">
+            <DashboardAppointmentsModal showModalHandler={showModalHandler} />
           </div>
-          <div className="flex flex-col space-y-5 md:flex-row md:space-x-4 md:space-y-0">
-            <input
-              className="p-2 w-full text-white bg-transparent border outline-none text-sm rounded placeholder-white"
-              type="text"
-              placeholder="Your Email"
-            />
-            <input
-              className="p-2 w-full text-white bg-transparent border outline-none text-sm rounded placeholder-white"
-              type={dateType ? "datetime-local" : "text"}
-              placeholder="Appointment Date & Time"
-              onFocus={() => setDateType((prevVal) => !prevVal)}
-              onBlur={() => setDateType((prevVal) => !prevVal)}
-            />
-          </div>
-        </div>
-        <div className="text-[#333] mb-5 md:mb-4">
-          <select className="p-1 rounded outline-none" name="branch">
-            <option value="select branch">Select Branch</option>
-            <option value="uyo">Uyo</option>
-            <option value="port harcourt">Port Harcourt</option>
-          </select>
-        </div>
-        <div>
-          <textarea
-            className="w-full h-40 p-2 mb-5 text-sm text-white bg-transparent border rounded placeholder-white md:mb-4"
-            placeholder="Notes (if possible, tell us what your appointment is for)"
-          />
-        </div>
-        <div className="flex justify-center">
-          <button onClick={()=>handleClick()} className="px-10 py-3 text-lg font-bold uppercase border border-white rounded-full transition-colors hover:bg-[#045544]">
-            Send
-          </button>
-        </div>
-     </div>
-            
+        )}         
     </section>
- 
+    {showModal && <DashboardOverlay />}
+
     </>
   )
 }

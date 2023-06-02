@@ -1,11 +1,6 @@
- import DashboardUpdate from "../../../pages/Dashboard/DashboardUpdate";
-import {
-  DashboardGenerateButton,
-  DashboardRegisterButton,
+ import {
   DashboardCloseButton,
   DashboardAddButton,
-  DashboardUpdateButton,
-  DashboardDeleteButton,
 } from "../DashboardButton";
 
 const Dashboardservices2 = ({showModalHandler}) => {

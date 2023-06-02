@@ -3,8 +3,7 @@ import DashboardButton, { DashboardDeleteButton, DashboardUpdateButton } from ".
 import ServiceData from '../../../ServiceData/ServiceData';
 import DashboardOverlay from '../DashboardOverlay';
 import Dashboardservices2 from './Dashboardservices2';
-import { MdUpdate } from "react-icons/md";
-
+ 
  const Dashboardservices = () => {
   const [showModal, setShowModal] = useState(false);
 

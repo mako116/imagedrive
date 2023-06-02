@@ -61,7 +61,7 @@ const DashboardUpdates = () => {
 
  
   return (
-   
+    <>
       <div className="content">
         <div className="container">
           <AddTodo
@@ -73,6 +73,8 @@ const DashboardUpdates = () => {
           <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
         </div>
       </div>
+     
+      </>
    );
 };
 

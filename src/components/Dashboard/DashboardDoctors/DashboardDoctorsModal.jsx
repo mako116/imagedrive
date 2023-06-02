@@ -1,5 +1,4 @@
 import {
-    DashboardGenerateButton,
     DashboardRegisterButton,
     DashboardCloseButton,
   } from "../DashboardButton";
@@ -11,7 +10,7 @@ import {Form, FormGroup} from "reactstrap"
     const onSubmit=(data)=>console.log(data);
     return (
       <>
-        <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-xl rounded md:w-[550px]">
+        <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-xl rounded md:w-[550px]" id="responsiveModal">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-xl">Doctors Registration</h4>
             <button className="outline-[#f97729]" onClick={showModalHandler}>
@@ -40,7 +39,7 @@ import {Form, FormGroup} from "reactstrap"
                 <input
                   id="name"
                   type="text"
-                  className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                  className="py-1 w-[100%] px-2 border border-gray-400 outline-[#f97729] rounded"
                   {...register("name",{required:true,
                 minLength:6,
                 maxLength:12,

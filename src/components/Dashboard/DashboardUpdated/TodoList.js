@@ -11,7 +11,7 @@ const TodoList = ({ todos, deleteTodo, editTodo }) => {
 
 
         return (
-            <div className = "todolist" > {
+            <div className = "todolisted" > {
             newTodo && newTodo?.length ? (
                 newTodo?.map((todo, index) => ( <
                     TodoItem key = { index }
@@ -21,6 +21,7 @@ const TodoList = ({ todos, deleteTodo, editTodo }) => {
                     />
                 ))) : ( < div className = "text-center" >
                 <p> No comments </p> </div>
+                
             )
         } </div>
     );
