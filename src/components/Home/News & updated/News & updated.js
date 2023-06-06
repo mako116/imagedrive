@@ -26,7 +26,12 @@ const Newsupdated = () => {
             <ProductList NewsData={Productz}/>
           }
         </div>
-        <div className="flex flex-col items-center space-y-4 px-4 py-6 bg-[#f97729] text-white lg:flex-row lg:justify-around lg:items-center lg:space-y-0 lg:px-0">
+        
+      </div>
+      </section> 
+     </div>
+     </div>
+     <div className="flex flex-col items-center space-y-4 px-0 py-6 bg-[#f97729] text-white lg:flex-row lg:justify-around lg:items-center lg:space-y-0 lg:px-0">
         <p className="text-xl text-center md:text-2xl">
           Book an Appointment with our Eye Clinic in Uyo
         </p>
@@ -49,10 +54,6 @@ const Newsupdated = () => {
           </div>
         </div>
       </div>
-      </div>
-      </section> 
-     </div>
-     </div>
       </>
       
   )
