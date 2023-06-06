@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 
 import firstDoctorImg from "../../assets/doctors/doctor-1.jpg";
 import secondDoctorImg from "../../assets/doctors/doctor-2.jpg";
-
+import React from "react";
+ 
 const Doctors = () => {
+
+
   return (
     <section
-      id="doctors"
-      className="pt-10 pb-16 px-6 bg-[#2f2f2f] text-white sm:px-12 md:py-16 md:px-20 lg:px-16 xl:px-28"
+       className="pt-10 pb-16 px-6 bg-[#2f2f2f] text-white sm:px-12 md:py-16 md:px-20 lg:px-16 xl:px-28"
     >
       <div className="flex flex-col items-center mb-10">
         <h2 className="mb-3 text-center text-3xl font-bold uppercase md:text-4xl">

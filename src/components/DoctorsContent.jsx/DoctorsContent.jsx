@@ -2,10 +2,18 @@ import { Link } from "react-router-dom";
 
 import firstDoctorImg from "../../assets/doctors/doctor-1.jpg";
 import secondDoctorImg from "../../assets/doctors/doctor-2.jpg";
+import { useEffect } from "react";
 
 const DoctorsContent = ({ drIjeoma, drEdidiong }) => {
+  function ScrollToTopMount(){
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+    return null
+}
   return (
     <section>
+            <ScrollToTopMount/>
       <div className="py-56 bg-pages-heroBg bg-no-repeat bg-cover bg-center" />
       {drIjeoma && (
         <div className="pt-12 pb-14 px-6 sm:px-12 md:px-20 lg:px-16 xl:px-28">

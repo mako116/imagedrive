@@ -1,7 +1,6 @@
 import {
     DashboardCloseButton,
-   DashboardAddButton,
- } from "../DashboardButton";
+  } from "../DashboardButton";
  
  const DashboardAppointmentsModal = ({ showModalHandler }) => {
    return (
@@ -77,8 +76,7 @@ import {
              </div>
         </div>  
             <div className="flex items-center justify-end space-x-2">
-            <DashboardAddButton  text="add"/>
-              
+               
               <DashboardCloseButton
                text="Close"
                showModalHandler={showModalHandler}

@@ -6,14 +6,14 @@
    const whatsappData = [
      {
        phoneNumber: "+2348179773100",
-       companyName: "Imageplus Uyo",
+       companyName: "Imageplus",
        message: "Welcome to Imageplus Eye Clinic"
      },
-     {
-       phoneNumber: "+2349071259643",
-       companyName: "Imageplus Portharcourt",
-       message: "Welcome to Imageplus Eye Clinic"
-     }
+    //  {
+    //    phoneNumber: "+2349071259643",
+    //    companyName: "Imageplus  ",
+    //    message: "Welcome to Imageplus Eye Clinic"
+    //  }
    ];
 
    return (
