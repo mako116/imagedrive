@@ -51,6 +51,10 @@ const BookAppointment = () => {
             <option value="select branch">Select Branch</option>
             <option value="uyo">Uyo</option>
             <option value="port harcourt">Port Harcourt</option>
+            <option value="abia">Asaba,Asaba  </option>
+            <option value="abuja">Aba  </option>
+            <option value="abuja">Lagos</option>
+            <option value="abuja">Abuja</option>
           </select>
         </div>
         <div>

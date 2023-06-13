@@ -55,7 +55,7 @@ const MobileNav = ({ showMobileNav, showMobileNavHandler }) => {
               className="py-2 px-6 border-b transition hover:text-[#f97729]"
               onClick={showMobileNavHandler}
             >
-              <a href="#services">Services</a>
+              <a href="/services">Services</a>
             </li>
             <li
               className="py-2 px-6 border-b transition hover:text-[#f97729]"

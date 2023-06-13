@@ -26,6 +26,7 @@ import DashboardUsers from "./pages/Dashboard/DashboardUsers";
 import "./fonts/Providence.ttf";
  import Newsupdates from "./pages/News&updates";
  import ProductDetails from "./components/Home/ProductDetails";
+import Services from "./components/Home/Services";
  
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "contact-us",
         element: <ContactPage />,
+      },
+      {
+        path: "services",
+        element: <Services />,
       },
       {
         path: "news-updates",

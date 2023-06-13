@@ -42,7 +42,7 @@ const Navigation = () => {
                 <Link to="/about-us">About Us</Link>
               </li>
               <li className="transition hover:text-[#f97729]">
-                <a href="#services">Services</a>
+                <Link to="/services">Services</Link>
               </li>
               <li className="transition hover:text-[#f97729]">
                 <Link to="/news-updates">News & Updates</Link>
