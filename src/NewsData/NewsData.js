@@ -58,7 +58,7 @@ const Productz =[
     {
      id:"04",
      img:debunking,
-     title:"DEBUNKING MYTHS/MISCONCEPTIONS ABOUT GLASSES:",
+     title:"DEBUNKING MISCONCEPTIONS ABOUT GLASSES :",
      minidate:"21/08/2017",
      date: "Wednesday, 2nd October, 2019 to Monday, 14th October, 2019.",
      paragraph1:"There are a couple of views many adhere to tenaciously with respect to spectacle wear, while some on the other hand seek clarifications to these myths. But what are these blurry sets of thesis, and how true are they?   The Disease Concept: Are refractive errors communicable? The answer is No; they aren’t. Myopia, hyperopia, and astigmatism cannot be transmitted physically from person to person, as they are not...  ",

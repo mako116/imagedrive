@@ -21,12 +21,11 @@ const Newsupdated = () => {
       <div className="-top-80">
         <div className="w-full">
           { productData.length === 0?(
-            <div className=""></div>
+            <div></div>
           ):
             <ProductList NewsData={Productz}/>
           }
         </div>
-        
       </div>
       </section> 
      </div>

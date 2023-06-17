@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom'
       <Link to={`/shop/${item.id}`}>
      <img src={item.img} alt="" className="w-screen" />
      </Link>
-      <span>
+      <span className='w-50'>
           <Link to={`/shop/${item.id}`}>
         <h2 className="underline text-2xl">{item.title}</h2>
         </Link>

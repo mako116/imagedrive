@@ -7,6 +7,7 @@ import diagnosticTestingImg from "../../assets/services/diagnostic-testing.jpg";
 import opticalServicesImg from "../../assets/services/optical-services.jpg";
 import contactLensesImg from "../../assets/services/contact-lenses.jpg";
 import theOutdoorClinicImg from "../../assets/services/the-outdoor-clinic.jpg";
+import { useEffect } from "react";
 
 const ServicesContent = ({
   lowVisionClinic,
@@ -17,8 +18,15 @@ const ServicesContent = ({
   contactLenses,
   theOutdoorClinic,
 }) => {
+  function ScrollToTopMount(){
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
+    return null
+}
   return (
     <section>
+      <ScrollToTopMount/>
       <div className="py-56 bg-pages-heroBg bg-no-repeat bg-cover bg-center" />
       <div className="pt-12 pb-14 px-6 sm:px-12 md:px-20 lg:px-16 xl:px-28">
         <div className="flex flex-col items-center mb-10">
