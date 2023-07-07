@@ -1,13 +1,52 @@
+import { useState } from "react";
 import {
     DashboardRegisterButton,
     DashboardCloseButton,
   } from "../DashboardButton";
-  import {useForm} from 'react-hook-form'
-
-import {Form, FormGroup} from "reactstrap"
+ 
+ import axios from "axios"
+import { useNavigate } from "react-router-dom";
   const DashboardDoctorssModal = ({ showModalHandler }) => {
-    const {register, formState:{errors},handleSubmit}=useForm()
-    const onSubmit=(data)=>console.log(data);
+    
+
+    const [name, setName] =useState("")
+    const [title, setTitle] =useState("")
+    const [city, setCity] =useState("")
+    const[state, setState] = useState('')
+    const[address, setAddress] = useState("")
+    const[about, setAbout] = useState("")
+    const[schedule, setSchedule] = useState("")
+    const[facebook ,setFacebook] = useState("")
+    const[twitter,setTwitter] = useState("")
+    const[instagram ,setInstagram] = useState("")
+    const[linkedin, setLinkedin] = useState("")
+    // const[image, setimage] = useState("")
+
+    const navigate = useNavigate();
+
+    const handleSubmi = async(e)=>{
+      e.preventDefault();
+       try {
+        const res = await axios.post('http://backend.imagepluseyeclinic.com/api/teams', {
+          name,
+          title,
+          city,
+          state,
+          address,
+          about,
+          schedule,
+          facebook,
+          twitter,
+          instagram,
+          linkedin,
+          // image:"",
+        })
+        console.log(res);
+        navigate()
+      } catch (error) {
+        console.log(error)
+      }
+    }
     return (
       <>
         <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-xl rounded md:w-[550px]" id="responsiveModal">
@@ -31,103 +70,141 @@ import {Form, FormGroup} from "reactstrap"
             </button>
           </div>
   
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmi}>
             <div className="flex flex-col space-y-4 mb-6">
-              <div className="flex flex-col space-y-1">
-                <label htmlFor="name">Name</label>
-               <FormGroup>
+            
+            <div className="flex flex-col space-y-1 pb-2">
+                <label htmlFor="title">Title</label>
                 <input
-                  id="name"
-                  type="text"
-                  className="py-1 w-[100%] px-2 border border-gray-400 outline-[#f97729] rounded"
-                  {...register("name",{required:true,
-                minLength:6,
-                maxLength:12,
-                
-                })}
-                />
-                </FormGroup>
-                {errors.name?.type === "minLength" && "name is less"}
-                {errors.name?.type === "maxLength" && "name is too long"}
-              </div>
-              <div className="flex flex-col space-y-1 pb-2">
-                <label htmlFor="phoneNo">Phone No.</label>
-                <input
-                  id="phoneNo"
+                  id="tile"
                   type="text"
                   className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-                  {...register("text",{
-                minLength:6,
-                maxLength:12,
-              })}
+                  onChange={(e)=>setTitle(e.target.value)}
+                value={title}
                 />
-               <error>
-               {errors.text?.type === "minLength" && "Entered text is less"}
-               {errors.text?.type === "maxLength" && "Entered text is too long"}
-               </error>
+             
               </div>
-
+              
+              <div className="flex flex-col space-y-1">
+                            
+              <label htmlFor="name">Name</label>
+              <input
+                onChange={(e)=>setName(e.target.value)}
+                value={name}
+                  id="name"
+                  type="text"
+ 
+                />
+                </div>
               <div className="flex flex-col space-y-4 py-4 border-y-2">
                 <h4 className="text-lg">Address</h4>
-                <div className="flex flex-col space-y-1">
-                  <label htmlFor="state">State</label>
-                  <input
-                    id="state"
-                    type="text"
-                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-                    {...register('text', { required: true })}
-
-                  />
-                   {errors.text?.type === "required" && "state Needed"}
-
-                </div>
                 <div className="flex flex-col space-y-1">
                   <label htmlFor="City">City</label>
                   <input
                     id="City"
                     type="text"
                     className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-                    {...register('text', { required: true })}
+                    onChange={(e)=>setCity(e.target.value)}
+                value={city}
                   />
-                  {errors.text?.type === "required" && "City Needed"}
+ 
                 </div>
+                <div className="flex flex-col space-y-1">
+                  <label htmlFor="state">state</label>
+                  <input
+                    id="state"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setState(e.target.value)}
+                value={state}                  />
+                 </div>
                 <div className="flex flex-col space-y-1 py-1">
                   <label htmlFor="residentialAddress">Residential Address</label>
                   <input
                     id="residentialAddress"
                     type="text"
                     className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-                    {...register('text', { required: true })}
-                  />
-                    {errors.text?.type === "required" && "residentialAddress Needed"}
-                </div>
-              </div>
-  
-              
-              <div className="flex flex-col space-y-1">
-                <label htmlFor="profile">profile</label>
+                    onChange={(e)=>setAddress(e.target.value)}
+                value={address}  />
+                 </div>
+                <div className="flex flex-col space-y-1 py-1">
+                  <label htmlFor="residentialAddress"> about</label>
+                  <input
+                    id="about"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setAbout(e.target.value)}
+                value={about}  />
+                 </div>
+                <div className="flex flex-col space-y-1 py-1">
+                  <label htmlFor="schedule">schedule</label>
+                  <input
+                    id="schedule"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setSchedule(e.target.value)}
+                value={schedule}  />
+                 </div>
+                <div className="flex flex-col space-y-1 py-1">
+                  <label htmlFor="facebook">facebook</label>
+                  <input
+                    id="facebook"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setFacebook(e.target.value)}
+                value={facebook}  />
+                 </div>
+                <div className="flex flex-col space-y-1 py-1">
+                  <label htmlFor="instagram">Instagram</label>
+                  <input
+                    id="instagram"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setInstagram(e.target.value)}
+                value={instagram}  />
+                 </div>
+                <div className="flex flex-col space-y-1 py-1">
+                  <label htmlFor="twitter">twitter</label>
+                  <input
+                    id="twitter"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setTwitter(e.target.value)}
+                value={twitter}  />
+                 </div>
+                <div className="flex flex-col space-y-1 py-1">
+                  <label htmlFor="linkedin">Linkedin</label>
+                  <input
+                    id="linkedin"
+                    type="text"
+                    className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                    onChange={(e)=>setLinkedin(e.target.value)}
+                value={linkedin}  />
+                 </div>
+                 {/* <div className="flex flex-col space-y-1">
+                <label htmlFor="profile">image</label>
                 <input
-                  id="profile"
+                  id="image"
                   type="file"
                   className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-                  {...register('file', { required: true })}
-
+                  onChange={(e)=>setimage(e.target.files[0])}
+                value={image}
                 />
-                   <error>
-              {errors.file?.type === "required" && "file Needed"}
-              </error>
+                    
+              </div> */}
               </div>
-            </div>
+              </div>
             <div className="flex items-center justify-end space-x-2">
-               <DashboardRegisterButton onClick={()=> handleSubmit()} type='submit' text="Register" />
+               <DashboardRegisterButton   type='submit' text="Register" />
               <DashboardCloseButton
               
                 text="Close"
                 showModalHandler={showModalHandler}
               />
             </div>
-          </Form>
+          </form>
         </div>
+        
       </>
     );
   };

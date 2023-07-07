@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import rarrSvg from "../../../assets/rarr.svg";
 
 const DashboardSmallNavigation = () => {
@@ -7,6 +8,7 @@ const DashboardSmallNavigation = () => {
         <button className="flex items-center space-x-2 text-sm sm:text-base">
           <p>imageplusng@gmail.com</p>
           <img className="w-4 h-4" src={rarrSvg} alt="Right Arrow" />
+          <Link to="/login">login</Link>
         </button>
       </div>
     </section>

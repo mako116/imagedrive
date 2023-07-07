@@ -1,9 +1,9 @@
-import DashboardUsersOption from "../../components/Dashboard/DashboardUsers/DashboardUsers"
-
+ import DashboardUser from "../../components/Dashboard/DashboardUsers/DashboardUser"
+ 
  
 const DashboardUsers = () => {
   return (
-   <DashboardUsersOption/>
+  <DashboardUser/>
   )
 }
 

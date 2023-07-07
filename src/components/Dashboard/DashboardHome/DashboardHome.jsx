@@ -1,6 +1,6 @@
-import DashboardHomeBox from "./DashboardHomeBox";
-
+ import DashboardHomeBox from "./DashboardHomeBox";
 const DashboardHome = () => {
+ 
   return (
     <section className="py-7 px-4">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -13,7 +13,7 @@ const DashboardHome = () => {
         <DashboardHomeBox
           heading="Services"
           total="0"
-          borderColor="border-[#045544]"
+          borderColor="border-[#045544]" 
           color="text-[#045544]"
         />
         <DashboardHomeBox

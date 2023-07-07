@@ -1,43 +1,40 @@
- import { useState } from "react";
+import { useState } from "react";
 import {
   DashboardCloseButton,
   DashboardAddButton,
 } from "../DashboardButton";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Dashboardservices2 = ({showModalHandler}) => {
- 
-  const [title, setTitle] =useState("")
-  const [description, setDescription] =useState("")
-  const [short_desc, setShort_desc] =useState("")
-  const[image, setImage] = useState('')
- 
-  const navigate = useNavigate();
+const DashboardserviceUpdate = ({showUpdatelHandler}) => {
+    const [title, setTitle] =useState("")
+    const [description, setDescription] =useState("")
+    const [short_desc, setShort_desc] =useState("")
+    const[image, setImage] = useState('')
+   
+    const navigate = useNavigate();
 
-
-  const handleSubmi = async(e)=>{
-    e.preventDefault();
-    try {
-      const res = await axios.post('http://backend.imagepluseyeclinic.com/api/services', {
-        title,
-        description,
-        short_desc,
-        image,
-      })
-      console.log(res);
-      navigate("/Services")
-
-    } catch (error) {
-      console.log(error)
+    const handleUpdate = (e, id)=>{
+        e.preventDefault();
+        axios.patch(`http://backend.imagepluseyeclinic.com/api/services/1`, {
+            title,
+            description,
+            short_desc,
+            image,
+        }).then((res)=>{
+          navigate("/Services")
+            console.log(res);
+        }).catch(err =>console.log(err));
+            
+        
+        
     }
-  }
   return (
     <>
       <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-x2 rounded md:w-[550px]">
         <div className="flex items-center justify-between mb-4">
           <h4 className="text-xl">Our Services</h4>
-          <button className="outline-[#f97729]" onClick={showModalHandler}>
+          <button className="outline-[#f97729]" onClick={showUpdatelHandler}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -55,7 +52,7 @@ const Dashboardservices2 = ({showModalHandler}) => {
           </button>
         </div>
 
-        <form onSubmit={handleSubmi}>
+        <form onSubmit={handleUpdate}>
           <div className="flex flex-col space-y-4 mb-6">
             <div className="flex flex-col space-y-1">
               <label htmlFor="title">title</label>
@@ -108,7 +105,7 @@ const Dashboardservices2 = ({showModalHandler}) => {
           />             
               <DashboardCloseButton
               text="Close"
-              showModalHandler={showModalHandler}
+              showModalHandler={showUpdatelHandler}
             />
           </div>
         </form>
@@ -117,4 +114,4 @@ const Dashboardservices2 = ({showModalHandler}) => {
   )
 }
 
-export default Dashboardservices2
+export default DashboardserviceUpdate

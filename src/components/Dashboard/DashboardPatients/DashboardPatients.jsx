@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+ import axios from 'axios'
+
 
 import DashboardButton, {
-  DashboardEditButton,
-  DashboardDeleteButton,
+   DashboardDeleteButton,
+  DashboardUpdateButton,
 } from "../DashboardButton";
 import DashboardPatientsModal from "./DashboardPatientsModal";
 import DashboardOverlay from "../DashboardOverlay";
@@ -14,6 +15,41 @@ const DashboardPatients = () => {
   const showModalHandler = () => {
     setShowModal((prevVal) => !prevVal);
   };
+
+  const [data,empDataChange] =useState([])
+  React.useEffect(()=>{
+
+
+         const getRes = () => {
+          fetch("http://backend.imagepluseyeclinic.com/api/patients")
+
+          .then((res)=>{
+              return res.json()
+          }).then((resp)=>{
+            console.log(resp.data);
+              empDataChange(resp.data);
+          }).catch((err)=>{
+              console.log(err.message);
+          }) 
+         }
+         getRes();
+      
+  },[])
+
+  const getDelete = async () =>{
+    try{
+      let res = await axios.delete(`http://backend.imagepluseyeclinic.com/api/patients/2`)
+      if(res.ok){
+        console.log('successfully deleted')
+      }else{
+        console.log('error')
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+  
+  }
 
   return (
     <div>
@@ -34,31 +70,78 @@ const DashboardPatients = () => {
                   Phone No.
                 </th>
                 <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                 state
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  city
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  address
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                 email
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  ocular_history
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  auto_ref
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                sub_ref
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  pd
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  drugs
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                 visual_acuity
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                  fundoscopy
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                 prescription
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
+                 remark
+                </th>
+                <th className="px-10 py-2 md:px-16 lg:px-24 xl:px-32">
                   Actions
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b">
-                <td className="py-2 px-2">
-                  <Link>Mfonobong Godwin Peter</Link>
-                </td>
-                <td className="py-2 px-2">0812673811</td>
+             
+            {
+              data &&
+                data.map(item=>(
+                <tr  className="border-b" key={item.id}>
+                <td className="py-5 px-5 border">{item.name}</td>
+                 <td className="space-x-2 py-5 border">{item.phone}</td>
+                 <td className="py-2 px-2">{item.state}</td>
+                <td className="py-5 px-4 border">{item.city}</td>
+                <td className="py-5 px-4 border">{item.address}</td>
+                <td className="py-5 px-4 border">{item.email}</td>
+                <td className="py-5 px-4 border">{item.ocular_history}</td>
+                <td className="py-5 px-4 border">{item.auto_ref}</td>
+                <td className="py-5 px-4 border">{item.sub_ref}</td>
+                <td className="py-5 px-4 border">{item.pd}</td>
+                <td className="py-5 px-4 border">{item.drugs}</td>
+                <td className="py-5 px-4 border">{item.fundoscopy}</td>
+                <td className="py-5 px-4 border">{item.prescription}</td>
+                <td className="py-5 px-4 border">{item.remark}</td>
                 <td className="flex justify-center space-x-2 py-2">
-                  <DashboardEditButton />
-                  <DashboardDeleteButton />
+                  <DashboardUpdateButton />
+                  <DashboardDeleteButton getDelete={getDelete} />
                 </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-2">
-                  <Link>Mfonobong Godwin Peter</Link>
-                </td>
-                <td className="py-2 px-2">0812673811</td>
-                <td className="flex justify-center space-x-2 py-2">
-                  <DashboardEditButton />
-                  <DashboardDeleteButton />
-                </td>
-              </tr>
+                </tr>
+               
+              ))
+             }
+              
             </tbody>
           </table>
         </div>

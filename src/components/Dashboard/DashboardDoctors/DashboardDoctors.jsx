@@ -1,16 +1,34 @@
 import React, { useState } from 'react'
-import DashboardButton, { DashboardDeleteButton, DashboardEditButton, DashboardViewButton } from "../DashboardButton";
+import DashboardButton, { DashboardDeleteButton,  DashboardUpdateButton } from "../DashboardButton";
  
  import DashboardOverlay from '../DashboardOverlay';
 import DashboardDoctorssModal from './DashboardDoctorsModal';
-import { DoctorsForum } from '../../../DoctorsLOcals/DoctorsProfile';
-  const DashboardDoctors = () => {
+   const DashboardDoctors = () => {
   const [showModal, setShowModal] = useState(false);
 
   const showModalHandler = () => {
     setShowModal((prevVal) => !prevVal);
   };
 
+  const [data,empDataChange] =useState([])
+  React.useEffect(()=>{
+
+ 
+         const getRes = () => {
+          fetch("http://backend.imagepluseyeclinic.com/api/teams")
+
+          .then((res)=>{
+              return res.json()
+          }).then((resp)=>{
+            console.log(resp.data);
+              empDataChange(resp.data);
+          }).catch((err)=>{
+              console.log(err.message);
+          }) 
+         }
+         getRes();
+      
+  },[])
 
   return (
     <div>
@@ -24,7 +42,33 @@ import { DoctorsForum } from '../../../DoctorsLOcals/DoctorsProfile';
         DOCTORS REGISTER
         </h4>
         <div className="py-2 text-white rounded-t  sm:w-full ">
-          {DoctorsForum.map((data, index)=>(
+        {
+              data.map(item=>(
+                <tr  className="border-b" key={item.id}>
+                <td className="py-2 px-2">{item.title}</td>
+                <td className="py-2 px-2">{item.name}</td>
+                <td className="py-2 px-2">{item.city}</td>
+                <td className="space-x-2 py-2">{item.state}</td>
+                <td className="py-4 px-4">{item.address}</td>
+                <td className="py-2 px-2">{item.about}</td>
+                <td className="py-2 px-2 border">{item.schedule}</td>
+                <td className="py-2 px-2 border">{item.facebook}</td>
+                <td className="py-2 px-2 border">{item.twitter}</td>
+                <td className="py-2 px-2 border">{item.instagram}</td>
+                <td className="py-2 px-2 border">{item.linkedin}</td>
+                <td className="py-2 px-2 border">
+                
+                <img src={item.image} alt="" />
+                </td>
+                <td className="flex justify-center space-x-2 py-2">
+                  <DashboardUpdateButton />
+                  <DashboardDeleteButton  />
+                </td>
+                </tr>
+               
+              ))
+             }
+          {/* {DoctorsForum.map((data, index)=>(
             <div className="py-2 text-white p-2 flex justify-between sm:w-full " key={index}>
                  <div className='flex justify-center'>
                  <img className='w-screen' id='responsive' src={data.img} alt="" />
@@ -42,7 +86,7 @@ import { DoctorsForum } from '../../../DoctorsLOcals/DoctorsProfile';
                </div>
                </span>
               </div>
-          ))}
+          ))} */}
         </div>
         
       </div>

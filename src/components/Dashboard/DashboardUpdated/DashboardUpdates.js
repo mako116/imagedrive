@@ -1,10 +1,58 @@
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+ import DashboardButton, { DashboardDeleteButton, DashboardUpdateButton } from '../DashboardButton';
+import axios from 'axios';
+ import DashboardOverlay from '../DashboardOverlay';
+import DashboardCommentsModal from './DashboardCommentsz';
   
 const DashboardComments = () => {
- 
+  const [showModal, setShowModal] = useState(false);
+
+  const showModalHandler = () => {
+    setShowModal((prevVal) => !prevVal);
+  };
+
+  const [data,empDataChange] =useState([])
+  React.useEffect(()=>{
+
+
+         const getRes = () => {
+          fetch("http://backend.imagepluseyeclinic.com/api/comments")
+
+          .then((res)=>{
+              return res.json()
+          }).then((resp)=>{
+            console.log(resp.data);
+              empDataChange(resp.data);
+          }).catch((err)=>{
+              console.log(err.message);
+          }) 
+         }
+         getRes();
+      
+  },[])
+
+  
+  const getDelete = async () =>{
+    try{
+      let res = await axios.delete(`http://backend.imagepluseyeclinic.com/api/comments/2`)
+      if(res.ok){
+        console.log('successfully deleted')
+      }else{
+        console.log('error')
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
+  
+  }
  return ( 
    <>
-   <section className='relative pt-5 px-3 sm:px-4'>  
+   <section className='relative pt-5 px-3 sm:px-4'> 
+   <DashboardButton
+          showModalHandler={showModalHandler}
+          text="Add appointments"
+        /> 
             <div className="w-full  pt-10 pb-10 text-gray rounded-none  md:pt-6 md:rounded"
               id="book-">
                <div className="flex flex-col items-center mb-10">
@@ -32,42 +80,32 @@ const DashboardComments = () => {
              </tr>
            </thead>
            <tbody>
-             <tr className="border-b">
-               <td className="py-5 px-5 border">
-               <Link>Mfonobong Godwin Peter</Link>
+           
+            {
+                data.map(item=>(
+                <tr  className="border-b" key={item.id}>
+                <td className="py-5 px-5 border">{item.name}</td>
+                 <td className="space-x-2 py-5 border">{item.email}</td>
+                 <td className="py-2 px-2">{item.comments}</td>
+                <td className="py-5 px-4 border">{item.date_time}</td>
+                <td className="flex justify-center space-x-2 py-2">
+                  <DashboardUpdateButton />
+                  <DashboardDeleteButton getDelete={getDelete} />
                 </td>
-                <td className="space-x-2 py-5 border">
-                <Link>prosperjoy@gmail.com</Link>
-               </td>
-               <td className="py-5 px-4 border">
-                  <span>20/03/2023</span>
-               </td>
+                </tr>
                
-               <td className="py-10 px-5 border">
-               <Link>comment from peter</Link>
-               </td>
-               
-             </tr>
-             <tr>
-               <td className="py-5 px-5 border">
-               <Link>Dr Ijeoma Nnabuife</Link>
-                </td>
-                <td className="space-x-2 py-5">
-               <Link>prosperjoy@gmail.com</Link>
-               </td>
-               <td className="py-5 px-5 border">
-               <span>20/03/2023</span>
-               </td>
-               
-               <td className="py-10 px-5 border">
-                 <Link>comments from ijeoma</Link>
-               </td>
-              
-             </tr>
+              ))
+             }
+            
            </tbody>
          </table>  
-        
+        {showModal && (
+          <div className="absolute z-20 top-4 left-1/2 -translate-x-1/2 md:top-6">
+            <DashboardCommentsModal showModalHandler={showModalHandler} />
+          </div>
+        )}      
     </section>
+    {showModal && <DashboardOverlay />}
    </>
  )
 }

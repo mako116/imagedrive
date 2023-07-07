@@ -1,8 +1,8 @@
- import DashboardUpdates from "../../components/Dashboard/DashboardUpdated/DashboardUpdates"
-
+ import DashboardComments from "../../components/Dashboard/DashboardUpdated/DashboardUpdates"
+ 
 const DashboardUpdate = () => {
   return (
-    <DashboardUpdates/>
+    <DashboardComments/>
   )
 }
 

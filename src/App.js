@@ -27,6 +27,9 @@ import "./fonts/Providence.ttf";
  import Newsupdates from "./pages/News&updates";
  import ProductDetails from "./components/Home/ProductDetails";
 import Services from "./components/Home/Services";
+import DashboardUser from "./components/Dashboard/DashboardUsers/DashboardUser";
+import DashboardserviceUpdate from "./components/Dashboard/DashboardServices/DashboardServiceUpdates";
+import DashboardTestUpdate from "./components/Dashboard/DashboardBookAppointment/DashboardTestUpdate";
  
 const router = createBrowserRouter([
   {
@@ -93,6 +96,10 @@ const router = createBrowserRouter([
         element: <DashboardServicePage />,
       },
       {
+        path: "Services/1",
+        element: <DashboardserviceUpdate />,
+      },
+      {
         path: "Doctors",
         element: <DashboardDoctor />,
       },
@@ -113,13 +120,17 @@ const router = createBrowserRouter([
         element: <DashboardBoardAppointments />,
      },  
       {
+        path: "book-appointment/1",
+        element: <DashboardTestUpdate />,
+     },  
+      {
         path: "news-update",
         element:<DashboardNews/>
      },  
       {
         path: "users",
-        element:<DashboardUsers/>
-     },  
+        element:<DashboardUser/>
+      },  
     ],
   },
 ]);

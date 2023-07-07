@@ -1,8 +1,8 @@
- import { Link } from 'react-router-dom';
- import DashboardButton, { DashboardDeleteButton, DashboardEditButton } from '../DashboardButton';
-import { useState } from 'react';
+  import DashboardButton, { DashboardAddButton, DashboardDeleteButton, DashboardEditButton, DashboardUpdateButton } from '../DashboardButton';
+import React, { useState } from 'react';
  import DashboardOverlay from '../DashboardOverlay';
 import DashboardAppointmentsModal from './DashboardAppointments2';
+import axios from 'axios';
   
 const DashboardBoardAppointments = () => {
   const [showModal, setShowModal] = useState(false);
@@ -10,6 +10,35 @@ const DashboardBoardAppointments = () => {
   const showModalHandler = () => {
     setShowModal((prevVal) => !prevVal);
   };
+  
+  const [data,empDataChange] =useState([])
+  React.useEffect(()=>{
+
+ 
+         const getRes = () => {
+          fetch("http://backend.imagepluseyeclinic.com/api/appointments")
+
+          .then((res)=>{
+              return res.json()
+          }).then((resp)=>{
+            console.log(resp.data);
+              empDataChange(resp.data);
+          }).catch((err)=>{
+              console.log(err.message);
+          }) 
+         }
+         getRes();
+      
+  },[])
+ 
+  const getDelete = async () =>{
+    let res = await axios.delete(`http://backend.imagepluseyeclinic.com/api/appointments/2`)
+    if(res.ok){
+      console.log('successfully deleted')
+    }else{
+      console.log('error')
+    }
+  }
   return (
     <>
     <section className='relative pt-5 px-3 sm:px-4'>  
@@ -48,50 +77,24 @@ const DashboardBoardAppointments = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b">
-                <td className="py-2 px-2">
-                <Link>Mfonobong Godwin Peter</Link>
-                 </td>
-                <td className="py-2 px-2">0812673811</td>
-                <td className="space-x-2 py-2">
-                 <Link>prosperjoy@gmail.com</Link>
-                </td>
-                <td className="py-4 px-4">
-                   <span>20/03/2023</span>
-                </td>
-                <td className="py-2 px-2">
-                  <Link>Port Harcourt</Link>
-                </td>
-                <td className="py-2 px-2 border">
-                <Link> Text:shouldnt be enlarged </Link>
-                </td>
+            {
+              data &&
+              data.map(item=>(
+                <tr  className="border-b" key={item.id}>
+                <td className="py-2 px-2">{item.name}</td>
+                <td className="py-2 px-2">{item.phone}</td>
+                <td className="space-x-2 py-2">{item.email}</td>
+                <td className="py-4 px-4">{item.date_time}</td>
+                <td className="py-2 px-2">{item.branch}</td>
+                <td className="py-2 px-2 border">{item.note}</td>
                 <td className="flex justify-center space-x-2 py-2">
-                  <DashboardEditButton />
-                  <DashboardDeleteButton />
+                  <DashboardUpdateButton />
+                  <DashboardDeleteButton getDelete={getDelete}/>
                 </td>
-              </tr>
-              <tr>
-                <td className="py-2 px-2">
-                <Link>Dr Ijeoma Nnabuife</Link>
-                 </td>
-                <td className="py-2 px-2">0812673811</td>
-                <td className="flex justify-center space-x-2 py-2">
-                <Link>prosperjoy@gmail.com</Link>
-                </td>
-                <td className="py-4 px-4">
-                <span>20/03/2023</span>
-                </td>
-                <td className="py-2 px-2">
-                  <Link>Uyo</Link>
-                </td>
-                <td className="py-3 px-3 border">
-                  <Link> Text:shouldnt be enlarged </Link>
-                </td>
-                <td className="flex justify-center space-x-2 px-2 py-2">
-                  <DashboardEditButton />
-                  <DashboardDeleteButton />
-                </td>
-              </tr>
+                </tr>
+               
+              ))
+             }
             </tbody>
           </table>  
           {showModal && (
