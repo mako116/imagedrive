@@ -25,36 +25,25 @@ import { useNavigate } from "react-router-dom";
 
     const handleSubmi = async(e)=>{
       e.preventDefault();
-       try {
-        const res = await axios.post('http://backend.imagepluseyeclinic.com/api/teams', {
-         name,
-          title,
-          city,
-          state,
-          address,
-          about,
-          schedule,
-          facebook,
-          twitter,
-          instagram,
-          linkedin,
-          image ,
-        })
-        console.log(res);
-       } catch (error) {
-        console.log(error)
-      }
-    }
-    const handFile = (e)=>{
-      const file = e.target.files[0];
+        const form = new FormData()
+      form.append("image",image);
+       form.append("title",title)
+        form.append("city",city)
+        form.append("state",state)
+        form.append("address",address)
+        form.append("about", about)
+        form.append("schedule", schedule)
+        form.append("name", name)
+        form.append("facebook", facebook)
+        form.append("twitter", twitter)
+        form.append("instagram",instagram)
+        form.append("linkedin", linkedin)
 
-      const image = new FormData()
-      image.append("image",file)
-      axios.post("http://backend.imagepluseyeclinic.com/api/teams", image, {
+        
+      axios.post("http://backend.imagepluseyeclinic.com/api/teams", form, {
         headers: {
           "Content-Type" : "multipart/form-data",
-          "x-rapidapi-host": "file-upload8.p.rapidapi.com",
-          "x-rapidapi-key": "your-rapidapi-key-here",
+        
         },
       }).then((res)=>{
         console.log(res);
@@ -62,6 +51,12 @@ import { useNavigate } from "react-router-dom";
       .catch((error)=>{
         console.log(error);
       })
+       
+    }
+    const handFile = (e)=>{
+      const file = e.target.files[0];
+      setImage (file); // set the image
+      
     }
     return (
       <>
