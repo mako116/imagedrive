@@ -65,7 +65,10 @@ const DashboardTestimonial2 = () => {
                 <td className="space-x-2 py-5 px-5 border">{item.star}</td>
                 <td className="space-x-2 py-5 px-5 border">{item.image}</td>
                <td>
-                    <DashboardUpdateButton />
+               <span className='p-2'>
+               <DashboardUpdateButton />
+               </span>
+                   
                     <span onClick={deleteHand}>
                     <DashboardDeleteButton/>
                     </span>
