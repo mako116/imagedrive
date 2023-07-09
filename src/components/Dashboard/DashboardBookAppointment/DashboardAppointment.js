@@ -35,7 +35,7 @@ const DashboardBoardAppointments = () => {
  {
   try{
     const res = await 
-    axios.delete(`http://backend.imagepluseyeclinic.com/api/appointments/2/${id}`)
+    axios.delete(`http://backend.imagepluseyeclinic.com/api/appointments/${id}`)
    console.log(res.data)
   } catch(error){
     console.log(error);
@@ -91,7 +91,7 @@ const DashboardBoardAppointments = () => {
             <tbody>
             {
               data &&
-              data.map((item,id)=>(
+              data.map((item)=>(
                 <tr  className="border-b" key={item.id}>
                 <td className="py-2 px-2">{item.name}</td>
                 <td className="py-2 px-2">{item.phone}</td>
@@ -101,7 +101,7 @@ const DashboardBoardAppointments = () => {
                 <td className="py-2 px-2 border">{item.note}</td>
                 <td className="flex justify-center space-x-2 py-2">
                   <DashboardUpdateButton />
-                  <span onClick={removeUser(item.id)}>
+                  <span onClick={() => removeUser(item.id)}>
                  delg
                   </span>
                 </td>
