@@ -52,10 +52,12 @@ import DashboardDoctorssModal from './DashboardDoctorsModal';
                 <td className="py-4 px-4">{item.address}</td>
                 <td className="py-2 px-2">{item.about}</td>
                 <td className="py-2 px-2 border">{item.schedule}</td>
+                <div className="flex flex-col p-2 ">
                 <td className="py-2 px-2 border">{item.facebook}</td>
                 <td className="py-2 px-2 border">{item.twitter}</td>
                 <td className="py-2 px-2 border">{item.instagram}</td>
                 <td className="py-2 px-2 border">{item.linkedin}</td>
+                </div>
                 <td className="py-2 px-2 border">
                 
                 <img src={item.image} alt="" />

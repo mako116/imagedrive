@@ -1,9 +1,32 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-
+import { useState } from "react";
 import starIcon from "../../../assets/star.svg";
+import React from "react";
+// import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 const Testimonials = () => {
+
+  const [data,empDataChange] =useState("")
+  React.useEffect(()=>{
+    const getRes = () => {
+      fetch("https://backend.imagepluseyeclinic.com/api/testimonials")
+
+      .then((res)=>{
+          return res.json()
+      }).then((resp)=>{
+        console.log(resp.data);
+          empDataChange(resp.data);
+      }).catch((err)=>{
+          console.log(err.message);
+      }) 
+     }
+     getRes();
+  
+
+  },[])
   return (
     <div className="w-full pt-6 md:w-1/2">
       <div className="flex flex-col items-center mb-10">
@@ -12,7 +35,39 @@ const Testimonials = () => {
         </h2>
         <div className="w-10 h-[3px] bg-[#f97729]" />
       </div>
-
+      {
+         data &&
+          data.map((item)=>(
+           <div className="mb-16 px-7 md:px-0 md:mb-24" key={item.id}>
+              <div className="flex justify-center space-x-1 mb-2">
+             <img
+              className="w-4 h-4 md:w-6 md:h-6"
+              src={starIcon}
+               alt="Five Stars"
+               />{item.stars}
+                </div>
+                <Carousel
+                     showThumbs={false}
+                     showStatus={false}
+                     preventMovementUntilSwipeScrollTolerance={true}
+                     infiniteLoop={true}
+                     autoPlay={true}
+                     interval={5000}
+                      >
+                      <div className="relative mx-3 px-4 pb-10 text-center">
+                      <p className="mb-8 text-lg">
+                      I was completely satisfied with my experience at Imageplus. The
+              Staff and Doctors were not just kind but also professional. Thank
+              you so much for saving my vision, Imageplus
+                      </p>
+                      
+                      <p>{item.title}</p>
+                      </div>
+                   </Carousel> 
+                 </div>
+              
+             ))
+            }
       <div className="mb-16 px-7 md:px-0 md:mb-24">
         <div className="flex justify-center space-x-1 mb-2">
           <img

@@ -32,6 +32,31 @@ const Dashboardservices2 = ({showModalHandler}) => {
       console.log(error)
     }
   }
+
+  const [selectedFile, setSelected] =useState(null)
+
+  const upload = async(e)=>{
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append("selected file", selectedFile)
+    try{
+      const response = await axios({
+        method:"post",
+        url:"http://backend.imagepluseyeclinic.com/api/services",
+        data: formData,
+        headers:{"Content-Type":"multipart/form-data"},
+      });
+      console.log(response);
+    }catch(error){
+      console.log(error);
+    }
+ 
+  }
+
+
+  // const handFileselect = (e)=>{
+  //   setSelected(e.target.files[0])
+  // }
   return (
     <>
       <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-x2 rounded md:w-[550px]">
@@ -88,17 +113,17 @@ const Dashboardservices2 = ({showModalHandler}) => {
               />
             </div>
             
-            <div className="flex flex-col space-y-1">
+           
+            <div className="flex flex-col space-y-1" onClick={upload}>
               <label htmlFor="image">image</label>
               <input
                 id="image"
-                type="text"
-                onChange={(e)=>setImage(e.target.value)}
+                type="file"
+                onChange={(e)=> setImage(e.target.files)}
                 value={image}
-                 
+                className="py-5 px-4 border border-gray-400 outline-[#f97729] rounded"
               />
             </div>
-           
             
           </div>
 

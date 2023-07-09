@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import DashboardButton, { DashboardDeleteButton, DashboardUpdateButton } from "../DashboardButton";
-import ServiceData from '../../../ServiceData/ServiceData';
-import DashboardOverlay from '../DashboardOverlay';
+ import DashboardOverlay from '../DashboardOverlay';
 import Dashboardservices2 from './Dashboardservices2';
-import { Link } from 'react-router-dom';
- 
+import axios from 'axios';
+  
  const Dashboardservices = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -19,10 +18,8 @@ import { Link } from 'react-router-dom';
 
   const [data,empDataChange] =useState([])
   React.useEffect(()=>{
-
- 
          const getRes = () => {
-          fetch("http://backend.imagepluseyeclinic.com/api/services")
+          axios("http://backend.imagepluseyeclinic.com/api/services/2")
 
           .then((res)=>{
               return res.json()
@@ -49,13 +46,12 @@ import { Link } from 'react-router-dom';
         </h4>
         <div className=" w-90 p-5">
         {
-          data &&
-              data.map(item=>(
-                
+          data.map(item=>(
                 <tr key={item.id}>
-                <td>{item.title}</td>
-                <td>{item.description}</td>
-                <td>{item.short_desc}</td>
+                 <td className="py-5 px-5 space-x-2 border">{item.title}</td>
+                 <td className="space-x-2 py-5 px-5 border">{item.description}</td>
+                 <td className="py-2 px-2">{item.short_desc}</td>
+                 <td className="py-2 px-2">{item.image}</td>
                  <td>
                     <DashboardUpdateButton showUpdatelHandler={showUpdatelHandler} />
                          <DashboardDeleteButton/>

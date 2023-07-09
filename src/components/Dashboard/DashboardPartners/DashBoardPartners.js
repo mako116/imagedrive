@@ -1,29 +1,82 @@
-import React from 'react'
-import { DashboardDeleteButton, DashboardEditButton } from '../DashboardButton'
-import { ImagePartners } from '../../../DoctorsLOcals/DoctorsProfile'
+import React,{useState} from 'react'
+import DashboardButton, { DashboardDeleteButton, DashboardUpdateButton } from '../DashboardButton'
+ import DashboardClients from './DashboardClients';
+import DashboardOverlay from '../DashboardOverlay';
   const DashBoardPart = () => {
+    const [showModal, setShowModal] = useState(false);
+
+    const showModalHandler = () => {
+      setShowModal((prevVal) => !prevVal);
+    };
+  
+    const [data,empDataChange] =useState([])
+    React.useEffect(()=>{
+  
+   
+           const getRes = () => {
+            fetch("http://backend.imagepluseyeclinic.com/api/clients")
+  
+            .then((res)=>{
+                return res.json()
+            }).then((resp)=>{
+              console.log(resp.data);
+                empDataChange(resp.data);
+            }).catch((err)=>{
+                console.log(err.message);
+            }) 
+           }
+           getRes();
+        
+    },[])
   return (
-    <>
-      <div className="flex justify-center space-x-1 sm:space-x-16 md:space-x-24">
-       {
-        ImagePartners.map((item, index)=>(
-          <div className="Dashboardpartners p-4 " key={index}>
-          <h2 className='flex justify-center'>{item.title}</h2>
-          <div className="img_padding  w-[100%] h-[100px]">
-          <img src={item.img} alt="" />
+    <div>
+      <section className="relative pt-7 px-3 sm:px-8">
+        <DashboardButton
+          showModalHandler={showModalHandler}
+          text="Add Patients"
+        />
+        <div className="bg-white shadow-md overflow-x-auto">
+          <h4 className="w-screen py-2 text-white text-xl text-center bg-[#f97729] rounded-t sm:w-screen">
+          Update users
+          </h4>
+          <table className="w-screen text-center bg-white rounded sm:w-full">
+            <thead>
+              <tr className="text-lg border-b-2">
+                  <th className="px-2 py-2 md:px-16 lg:px-4 xl:px-12">name</th>
+                  <th className="px-2 py-2 md:px-16 lg:px-4 xl:px-12">image </th>
+                <th className="px-2 py-2 md:px-16 lg:px-4 xl:px-12">Action </th>
+              </tr>
+            </thead>
+            <tbody>
+            {
+              data &&
+              data.map((item)=>(
+               <tr key={item.id}>
+                 <td className="py-2 px-2">{item.name}</td>
+                <td className="space-x-2 py-5 px-5 border">{item.image}</td>
+               <td>
+                    <DashboardUpdateButton />
+                    <span>
+                    <DashboardDeleteButton/>
+                    </span>
+                </td>
+                 </tr>
+              
+             ))
+            }
+            </tbody>
+          </table>
+        </div>
+        {showModal && (
+          <div className="absolute z-20 top-4 left-1/2 -translate-x-1/2 md:top-6">
+            <DashboardClients showModalHandler={showModalHandler} />
           </div>
-            <div className="flex justify-center gap-3">
-            <DashboardEditButton/>
-             <DashboardDeleteButton/>
-            </div>
-          </div>
-        ))
-       }
-      </div>
-      <div className="flex mt-6 justify-center">
-      <input type="file" />
-      </div>
-    </>
+        )}
+      </section>
+
+      {showModal && <DashboardOverlay />}
+    </div>
+  
   )
 }
 

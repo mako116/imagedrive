@@ -35,7 +35,7 @@ import { useNavigate } from "react-router-dom";
     try {
       const res = await axios.post('http://backend.imagepluseyeclinic.com/api/appointments', {
         name,
-        branch,
+        branch:{},
         email,
         phone,
         note,

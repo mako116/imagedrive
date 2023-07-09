@@ -13,7 +13,7 @@ const Services = () => {
     >
       <div className="flex flex-col items-center mb-5 md:mb-12">
         <h2 className="mb-3 text-center text-3xl font-bold uppercase md:text-4xl">
-          Our Servicesd
+          Our Services
         </h2>
         <div className="w-10 h-[3px] bg-[#f97729]" />
       </div>

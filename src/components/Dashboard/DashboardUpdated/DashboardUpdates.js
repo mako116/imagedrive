@@ -69,11 +69,6 @@ const DashboardComments = () => {
                <th className="px-5 py-2 md:px-6 lg:px-4 xl:px-12">
                Email
                </th>
-               
-               <th className="px-2 py-2 md:px-6 lg:px-4 xl:px-12">
-                Date & time
-               </th>
-              
                <th className="px-2 py-2 md:px-2 lg:px-2 xl:px-5">
                  Comments 
                </th>
@@ -86,9 +81,8 @@ const DashboardComments = () => {
                 <tr  className="border-b" key={item.id}>
                 <td className="py-5 px-5 border">{item.name}</td>
                  <td className="space-x-2 py-5 border">{item.email}</td>
-                 <td className="py-2 px-2">{item.comments}</td>
-                <td className="py-5 px-4 border">{item.date_time}</td>
-                <td className="flex justify-center space-x-2 py-2">
+                 <td className="py-2 px-2">{item.comment}</td>
+                 <td className="flex justify-center space-x-2 py-2">
                   <DashboardUpdateButton />
                   <DashboardDeleteButton getDelete={getDelete} />
                 </td>

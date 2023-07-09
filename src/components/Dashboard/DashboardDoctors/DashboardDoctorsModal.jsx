@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
     DashboardRegisterButton,
     DashboardCloseButton,
@@ -7,9 +7,8 @@ import {
  import axios from "axios"
 import { useNavigate } from "react-router-dom";
   const DashboardDoctorssModal = ({ showModalHandler }) => {
-    
-
-    const [name, setName] =useState("")
+   
+     const [name, setName] =useState("")
     const [title, setTitle] =useState("")
     const [city, setCity] =useState("")
     const[state, setState] = useState('')
@@ -20,7 +19,7 @@ import { useNavigate } from "react-router-dom";
     const[twitter,setTwitter] = useState("")
     const[instagram ,setInstagram] = useState("")
     const[linkedin, setLinkedin] = useState("")
-    // const[image, setimage] = useState("")
+    const[image, setImage] = useState( "")
 
     const navigate = useNavigate();
 
@@ -28,7 +27,7 @@ import { useNavigate } from "react-router-dom";
       e.preventDefault();
        try {
         const res = await axios.post('http://backend.imagepluseyeclinic.com/api/teams', {
-          name,
+         name,
           title,
           city,
           state,
@@ -39,13 +38,30 @@ import { useNavigate } from "react-router-dom";
           twitter,
           instagram,
           linkedin,
-          // image:"",
+          image ,
         })
         console.log(res);
-        navigate()
-      } catch (error) {
+       } catch (error) {
         console.log(error)
       }
+    }
+    const handFile = (e)=>{
+      const file = e.target.files[0];
+
+      const image = new FormData()
+      image.append("image",file)
+      axios.post("http://backend.imagepluseyeclinic.com/api/teams", image, {
+        headers: {
+          "Content-Type" : "multipart/form-data",
+          "x-rapidapi-host": "file-upload8.p.rapidapi.com",
+          "x-rapidapi-key": "your-rapidapi-key-here",
+        },
+      }).then((res)=>{
+        console.log(res);
+      })
+      .catch((error)=>{
+        console.log(error);
+      })
     }
     return (
       <>
@@ -70,10 +86,9 @@ import { useNavigate } from "react-router-dom";
             </button>
           </div>
   
-          <form onSubmit={handleSubmi}>
+          <form onSubmit={ handleSubmi}>
             <div className="flex flex-col space-y-4 mb-6">
-            
-            <div className="flex flex-col space-y-1 pb-2">
+  
                 <label htmlFor="title">Title</label>
                 <input
                   id="tile"
@@ -84,9 +99,7 @@ import { useNavigate } from "react-router-dom";
                 />
              
               </div>
-              
               <div className="flex flex-col space-y-1">
-                            
               <label htmlFor="name">Name</label>
               <input
                 onChange={(e)=>setName(e.target.value)}
@@ -181,20 +194,18 @@ import { useNavigate } from "react-router-dom";
                     onChange={(e)=>setLinkedin(e.target.value)}
                 value={linkedin}  />
                  </div>
-                 {/* <div className="flex flex-col space-y-1">
-                <label htmlFor="profile">image</label>
-                <input
-                  id="image"
-                  type="file"
-                  className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
-                  onChange={(e)=>setimage(e.target.files[0])}
+                 <div className="flex flex-col space-y-1">
+              <label htmlFor="image">image</label>
+              <input
+                id="image"
+                type="file"
+                onChange={handFile}
                 value={image}
-                />
-                    
-              </div> */}
+                className="py-5 px-4 border border-gray-400 outline-[#f97729] rounded"
+              />
+            </div>
               </div>
-              </div>
-            <div className="flex items-center justify-end space-x-2">
+             <div className="flex items-center justify-end space-x-2">
                <DashboardRegisterButton   type='submit' text="Register" />
               <DashboardCloseButton
               

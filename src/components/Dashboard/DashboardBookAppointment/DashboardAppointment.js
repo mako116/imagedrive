@@ -31,14 +31,26 @@ const DashboardBoardAppointments = () => {
       
   },[])
  
-  const getDelete = async () =>{
-    let res = await axios.delete(`http://backend.imagepluseyeclinic.com/api/appointments/2`)
-    if(res.ok){
-      console.log('successfully deleted')
-    }else{
-      console.log('error')
-    }
+ const removeUser = async (id) =>
+ {
+  try{
+    const res = await 
+    axios.delete(`http://backend.imagepluseyeclinic.com/api/appointments/2/${id}`)
+   console.log(res.data)
+  } catch(error){
+    console.log(error);
   }
+ }
+
+  // const handleDelete = (deleteID) =>{
+  //   axios.delete(`http://backend.imagepluseyeclinic.com/api/appointments/2/${deleteID}`)
+  //   .then(res =>{
+  //     empDataChange(res.data)
+  //   })
+  //   .catch( err => console.log(err))
+  //   }
+  // }
+
   return (
     <>
     <section className='relative pt-5 px-3 sm:px-4'>  
@@ -79,7 +91,7 @@ const DashboardBoardAppointments = () => {
             <tbody>
             {
               data &&
-              data.map(item=>(
+              data.map((item,id)=>(
                 <tr  className="border-b" key={item.id}>
                 <td className="py-2 px-2">{item.name}</td>
                 <td className="py-2 px-2">{item.phone}</td>
@@ -89,7 +101,9 @@ const DashboardBoardAppointments = () => {
                 <td className="py-2 px-2 border">{item.note}</td>
                 <td className="flex justify-center space-x-2 py-2">
                   <DashboardUpdateButton />
-                  <DashboardDeleteButton getDelete={getDelete}/>
+                  <span onClick={removeUser(item.id)}>
+                 delg
+                  </span>
                 </td>
                 </tr>
                

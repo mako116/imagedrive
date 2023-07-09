@@ -4,12 +4,25 @@ import DashboardOverlay from '../DashboardOverlay';
 import DashboardNewss from './DashboardNewss';
 
 const DashboardNewss2 = () => {
-    const NewsUpdates =[
-        {
-        topic: "War in brazil erupts football",
-        paragraph: "the war between gangs and police is causing a problem in the community , The leader of the jabari tribe have decided to make amends and bow down"
-       },
-]
+  const [data,empDataChange] =useState([])
+  React.useEffect(()=>{
+
+ 
+         const getRes = () => {
+          fetch("http://backend.imagepluseyeclinic.com/api/posts")
+
+          .then((res)=>{
+              return res.json()
+          }).then((resp)=>{
+            console.log(resp.data);
+              empDataChange(resp.data);
+          }).catch((err)=>{
+              console.log(err.message);
+          }) 
+         }
+         getRes();
+      
+  },[])
 const [showModal, setShowModal] = useState(false);
 
 const showModalHandler = () => {
@@ -29,19 +42,26 @@ const showModalHandler = () => {
                  <div className="w-10 h-[3px] bg-[#f97729]" />
                </div>
              </div>  
-                {NewsUpdates.map((topics,index)=>(
-                    <div className="p-4 bg-white mt-5 mx-2" key={index}>
-                    <div className=''>
-                        <h6 className='text-lg p-5 lg:text-xl font-bold'>{topics.topic}</h6>
-                        <hr className='w[100%]'/>
-                        <p className='text-start p-2'>{topics.paragraph}</p>
-                    </div>
-                    </div>
-                ))}
-                 <div className="flex justify-start gap-4 p-3 bg-[#e7e3db]">
-                <DashboardDeleteButton/>
+             {
+              data &&
+              data.map((item)=>(
+               <tr key={item.id}>
+                <td className="py-5 px-5 space-x-2 border">{item.title}</td>
+                <td className="py-2 px-2">{item.name}</td>
+                <td className="py-5 px-4 border">{item.body}</td>
+                <td className="space-x-2 py-5 px-5 border">{item.star}</td>
+                <td className="space-x-2 py-5 px-5 border">{item.image}</td>
+               <td className='flex justify-start gap-4 p-3 bg-[#e7e3db'>
+               <DashboardDeleteButton/>
                     <DashboardEditButton/>
                     <DashboardUpdateButton/>
+                </td>
+                 </tr>
+              
+             ))
+            }
+                 <div className="flex justify-start gap-4 p-3 bg-[#e7e3db]">
+                
                  </div>
                  {showModal && (
           <div className="absolute z-20 top-4 left-1/2 -translate-x-1/2 md:top-6">

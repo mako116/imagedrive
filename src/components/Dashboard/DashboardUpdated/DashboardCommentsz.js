@@ -8,10 +8,7 @@ import { useNavigate } from "react-router-dom";
  
  const DashboardCommentsModal = ({ showModalHandler }) => {
   
-  const [name, setName] =useState("")
-  const [comment, setComments] =useState("")
-  const [email, setEmail] =useState("")
-  const[date_time, setDate_time] = useState("")
+ 
   // const[date_time, setDate_time] = useState(new Date())
  
   // useEffect(()=>{
@@ -27,20 +24,7 @@ import { useNavigate } from "react-router-dom";
   // <p>Date: {date_time.toLocaleDateString()}</p>   
   // </div>  
  
-  const handleSubmi = async(e)=>{
-    e.preventDefault();
-    try {
-      const res = await axios.post('http://backend.imagepluseyeclinic.com/api/comments', {
-        name,
-         email,
-        comment,
-        date_time,
-      })
-      console.log(res);
-     } catch (error) {
-      console.log(error)
-    }
-  }
+ 
    return (
      <>
        <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-xl rounded md:w-[550px]" id="responsiveModal">
@@ -64,15 +48,14 @@ import { useNavigate } from "react-router-dom";
            </button>
          </div>
  
-         <form  onSubmit={handleSubmi}>
+         <form>
            <div className="flex flex-col space-y-4 mb-6">
              <div className="flex flex-col space-y-1">
                <label htmlFor="name">Name</label>
                <input
                  id="name"
                  type="text"
-                 onChange={(e)=>setName(e.target.value)}
-                value={name}
+                 
                  className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
                />
              </div>
@@ -81,9 +64,7 @@ import { useNavigate } from "react-router-dom";
                <label htmlFor="Email">Email.</label>
                <input
                  id="Email"
-                 onChange={(e)=>setEmail(e.target.value)}
-                value={email}
-                 type="email"
+                  type="email"
                  className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
                />
              </div>
@@ -93,9 +74,7 @@ import { useNavigate } from "react-router-dom";
                <input
                  id="comment"
                  type="text"
-                 onChange={(e)=>setComments(e.target.value)}
-                 value={comment}
-                 className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                   className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
                />
              </div>
              <div className="flex flex-col space-y-1 pb-2">
@@ -103,9 +82,7 @@ import { useNavigate } from "react-router-dom";
                <input
                  id="date_time"
                  type="text"
-                 onChange={(e)=>setDate_time(e.target.value)}
-                 value={date_time}
-                 className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
+                   className="py-1 px-2 border border-gray-400 outline-[#f97729] rounded"
                />
              </div>
         </div>  
