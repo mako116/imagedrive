@@ -62,7 +62,7 @@ const DashboardTest2 = ({showModalHandler}) => {
     <>
         <div className="px-6 pt-5 pb-6 mb-4 bg-white shadow-xl rounded md:w-[550px]" id="responsiveModal">
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-xl">Users Registration</h4>
+            <h4 className="text-xl">Users Registrations</h4>
             <button className="outline-[#493529]" onClick={showModalHandler}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
